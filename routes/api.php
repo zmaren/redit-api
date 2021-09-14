@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
+use Eyesee\Entities\Community\UI\API\Controllers\CommunityController;
 use Illuminate\Support\Facades\Route;
 use Eyesee\Entities\User\UI\API\Controllers\UserController;
-use Eyesee\Entities\Authentication\UI\API\Controllers\AuthenticationController;
+use Eyesee\Entities\Thread\UI\API\Controllers\ThreadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +19,18 @@ use Eyesee\Entities\Authentication\UI\API\Controllers\AuthenticationController;
 //Route::post('login', [AuthenticationController::class, 'login'])->name('login');
 Route::post('register', [UserController::class, 'registerUser'])->name('register');
 
-Route::middleware('auth:api')->group(function ($router) {
-    //$router->post('');
+Route::middleware('auth')->group(function ($router) {
+
+    $router->group(['prefix' => 'threads', 'as' => 'threads'], function () use ($router) {
+
+        $router->post('', [ThreadController::class, 'create']);
+
+    });
+
+    $router->group(['prefix' => 'communities', 'as' => 'communities'], function () use ($router) {
+
+        $router->post('', [CommunityController::class, 'create']);
+
+    });
+
 });
