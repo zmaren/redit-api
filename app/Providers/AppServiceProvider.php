@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Eyesee\Entities\User\Repositories\UserRepository;
+use Eyesee\Entities\User\Repositories\UserRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(UserRepository::class, UserRepositoryEloquent::class);
     }
 
     /**

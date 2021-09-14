@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Eyesee\Entities\User\UI\API\Controllers\UserController;
+use Eyesee\Entities\Authentication\UI\API\Controllers\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::post('login', [AuthenticationController::class, 'login'])->name('login');
+Route::post('register', [UserController::class, 'registerUser'])->name('register');
+
+Route::middleware('auth:api')->group(function ($router) {
+    //$router->post('');
 });
