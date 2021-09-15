@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
  */
 class Request extends FormRequest
 {
+    protected array $urlParameters;
+
     /**
      * @param null $keys
      * @return array

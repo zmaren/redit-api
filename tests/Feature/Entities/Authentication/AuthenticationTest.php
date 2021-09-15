@@ -3,13 +3,13 @@
 namespace Tests\Feature\Entities\Authentication;
 
 use Illuminate\Support\Facades\Route;
-use Tests\TestCase;
+use Tests\NoAuthTestCase;
 
 /**
  * Class AuthenticationTest
  * @package Tests\Feature\Entities\Authentication
  */
-class AuthenticationTest extends TestCase
+class AuthenticationTest extends NoAuthTestCase
 {
     /**
      * @return string[]

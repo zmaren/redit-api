@@ -35,13 +35,13 @@ class UserRegistrationTest extends TestCase
      */
     public function it_should_fail_if_wrong_data_is_provided($data, $message)
     {
-        $this->markTestSkipped();
+        //$this->markTestSkipped();
 
-        $response = $this->post(route('register'), $data);
+        $response = $this->post(route('register'), $data, ['accept' => 'application/json']);
 
         $response->assertStatus(422);
 
-        // TODO: For some reason response status code is 302 instead of 422.
+        $this->assertEquals($message, $response->getOriginalContent()['errors']);
     }
 
     /**

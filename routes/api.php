@@ -20,15 +20,17 @@ Route::post('register', [UserController::class, 'registerUser'])->name('register
 
 Route::group(['middleware' => 'auth:api'], function ($router) {
 
-    $router->group(['prefix' => 'threads', 'as' => 'threads'], function () use ($router) {
+    $router->group(['prefix' => 'threads', 'as' => 'threads.'], function () use ($router) {
 
-        $router->post('', [ThreadController::class, 'create']);
+        $router->post('', [ThreadController::class, 'create'])->name('create');
+        $router->put('{id}', [ThreadController::class, 'update'])->name('update');
+        $router->delete('{id}', [ThreadController::class, 'delete'])->name('delete');
 
     });
 
-    $router->group(['prefix' => 'communities', 'as' => 'communities'], function () use ($router) {
+    $router->group(['prefix' => 'communities', 'as' => 'communities.'], function () use ($router) {
 
-        $router->post('', [CommunityController::class, 'create']);
+        $router->post('', [CommunityController::class, 'create'])->name('create');
 
     });
 

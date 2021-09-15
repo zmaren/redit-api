@@ -7,14 +7,11 @@ use Eyesee\System\Requests\Request;
 use JetBrains\PhpStorm\ArrayShape;
 
 /**
- * Class UpdateThreadRequest
+ * Class DeleteThreadRequest
  * @package Eyesee\Entities\Thread\UI\API\Requests
  */
-class UpdateThreadRequest extends Request
+class DeleteThreadRequest extends Request
 {
-    /**
-     * @var array|string[]
-     */
     protected array $urlParameters = [
         'id'
     ];
@@ -22,15 +19,13 @@ class UpdateThreadRequest extends Request
     /**
      * @return array
      */
-    #[ArrayShape(['id' => "array", 'title' => "string", 'description' => "string"])] public function rules()
+    #[ArrayShape(['id' => "array", 'title' => "string", 'description' => "string"])] public function rules(): array
     {
         return [
             'id'          => [
                 'required',
                 new ThreadExistsForUserRule()
             ],
-            'title'       => 'filled',
-            'description' => 'filled'
         ];
     }
 }

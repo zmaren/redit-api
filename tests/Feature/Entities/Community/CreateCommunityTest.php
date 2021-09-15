@@ -21,7 +21,7 @@ class CreateCommunityTest extends TestCase
             Community::IS_FOR_ADULT => false
         ]);
 
-        $response = $this->post(route('communities'), $community->attributesToArray());
+        $response = $this->post(route('communities.create'), $community->attributesToArray());
 
         $response->assertStatus(201);
 
