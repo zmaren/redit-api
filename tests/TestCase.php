@@ -25,7 +25,7 @@ abstract class TestCase extends BaseTestCase
 
         $this->faker = Factory::create();
 
-        $this->createAuthenticatedUser();
+        //$this->createAuthenticatedUser();
     }
 
     /**

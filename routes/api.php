@@ -16,10 +16,9 @@ use Eyesee\Entities\Thread\UI\API\Controllers\ThreadController;
 |
 */
 
-//Route::post('login', [AuthenticationController::class, 'login'])->name('login');
 Route::post('register', [UserController::class, 'registerUser'])->name('register');
 
-Route::middleware('auth')->group(function ($router) {
+Route::group(['middleware' => 'auth:api'], function ($router) {
 
     $router->group(['prefix' => 'threads', 'as' => 'threads'], function () use ($router) {
 
