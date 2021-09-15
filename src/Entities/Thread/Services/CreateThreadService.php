@@ -30,7 +30,6 @@ class CreateThreadService extends MainService
 
             return $this->repository->create($data);
         } catch (\Exception $exception) {
-            dd($exception);
             throw new CreateResourceFailedException();
         }
     }
